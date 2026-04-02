@@ -17,30 +17,20 @@ body{
   text-align:center;
   overflow:hidden;
 
-  background: linear-gradient(135deg,#ffd6ec,#d6f0ff,#e6d6ff);
+  background: linear-gradient(135deg,#ffd6ec,#ffe3f7,#f3d6ff);
 }
 
-/* 🌈 พื้นหลังฟุ้ง */
-body::before{
-  content:"";
+/* 💖 ฟองลอย */
+.bubble{
   position:absolute;
-  width:300px;
-  height:300px;
-  background:#ffb6d9;
-  filter:blur(120px);
-  top:10%;
-  left:20%;
+  border-radius:50%;
+  background:rgba(255,182,193,0.3);
+  animation:float 10s infinite linear;
 }
 
-body::after{
-  content:"";
-  position:absolute;
-  width:300px;
-  height:300px;
-  background:#b6e0ff;
-  filter:blur(120px);
-  bottom:10%;
-  right:20%;
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
 }
 
 /* 🎀 กล่อง */
@@ -48,54 +38,70 @@ body::after{
   position:relative;
   z-index:1;
 
-  background:rgba(255,255,255,0.9);
+  background:rgba(255,255,255,0.95);
   backdrop-filter:blur(10px);
 
   padding:35px;
-  border-radius:25px;
+  border-radius:30px;
 
   box-shadow:
-    0 20px 60px rgba(255,182,193,0.4),
-    0 0 30px rgba(255,105,180,0.2);
+    0 20px 60px rgba(255,182,193,0.5),
+    0 0 40px rgba(255,105,180,0.3);
 }
 
-/* 💖 โลโก้ */
+/* 💎 โลโก้ */
 .logo{
   font-size:22px;
-  font-weight:700;
+  font-weight:800;
   color:#ff4da6;
 
-  text-shadow:0 0 10px rgba(255,105,180,0.5);
+  text-shadow:0 0 10px rgba(255,105,180,0.6);
 
-  animation:softBlink 1.5s infinite alternate;
+  animation:blink 1.5s infinite alternate;
 }
 
-/* 💎 โปร */
+/* 🌈 title */
 .title{
-  margin-top:8px;
+  margin-top:10px;
   font-size:30px;
   font-weight:900;
 
-  background: linear-gradient(90deg,#ff6ec4,#ff9ad5);
+  background: linear-gradient(90deg,#ff6ec4,#ff9ad5,#ff6ec4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  animation:pop 1s infinite alternate;
 }
 
 /* 🎁 ไอคอน */
 .gift{
-  font-size:45px;
-  margin-top:12px;
-  animation:float 2s infinite ease-in-out;
+  font-size:50px;
+  margin-top:15px;
+  animation:bounce 1.2s infinite;
 }
 
-/* ⏳ */
-.count{
+/* 💬 loading */
+.loading{
   margin-top:10px;
-  font-size:15px;
-  color:#666;
+  font-size:14px;
+  color:#888;
 }
 
-/* 🔘 ปุ่ม */
+/* 💫 dots */
+.dots span{
+  display:inline-block;
+  width:8px;
+  height:8px;
+  margin:3px;
+  background:#ff6ec4;
+  border-radius:50%;
+  animation:dot 1s infinite;
+}
+
+.dots span:nth-child(2){animation-delay:0.2s;}
+.dots span:nth-child(3){animation-delay:0.4s;}
+
+/* 🎀 ปุ่ม */
 .btn{
   display:block;
   margin-top:20px;
@@ -104,38 +110,57 @@ body::after{
   background: linear-gradient(90deg,#ff6ec4,#ff9ad5);
   color:white;
 
-  border-radius:15px;
+  border-radius:20px;
   text-decoration:none;
   font-weight:bold;
 
-  box-shadow:0 10px 20px rgba(255,105,180,0.3);
+  box-shadow:0 10px 20px rgba(255,105,180,0.4);
 }
 
 /* anim */
-@keyframes float{
+@keyframes bounce{
   0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-8px);}
+  50%{transform:translateY(-10px);}
 }
 
-@keyframes softBlink{
+@keyframes blink{
   from{opacity:1;}
-  to{opacity:0.7;}
+  to{opacity:0.6;}
+}
+
+@keyframes pop{
+  from{transform:scale(1);}
+  to{transform:scale(1.05);}
+}
+
+@keyframes dot{
+  0%,100%{opacity:0.3;}
+  50%{opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
+<!-- 💖 ฟองลอย -->
+<div class="bubble" style="width:80px;height:80px;left:10%"></div>
+<div class="bubble" style="width:60px;height:60px;left:30%"></div>
+<div class="bubble" style="width:100px;height:100px;left:70%"></div>
+<div class="bubble" style="width:50px;height:50px;left:90%"></div>
+
 <div class="box">
 
-  <div class="logo">Friend Follow Official</div>
+  <div class="logo">🎀 Friend Follow Official 🎀</div>
 
   <div class="title">Promotion 2569</div>
 
   <div class="gift">🎁</div>
 
-  <div class="count">
-    กำลังเข้าสู่โปรโมชั่น...
+  <div class="loading">
+    กำลังโหลดโปรโมชั่น
+    <div class="dots">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 
   <a class="btn" href="https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec">
@@ -147,7 +172,7 @@ body::after{
 <script>
 setTimeout(()=>{
   window.location.href="https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec";
-},2500);
+},3000);
 </script>
 
 </body>
