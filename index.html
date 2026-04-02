@@ -16,7 +16,6 @@ body{
   font-family:'Prompt',sans-serif;
   text-align:center;
   overflow:hidden;
-
   background: linear-gradient(135deg,#ffd6ec,#ffe3f7,#f3d6ff);
 }
 
@@ -29,8 +28,8 @@ body{
 }
 
 @keyframes floatUp{
-  from{transform:translateY(100vh) scale(1);}
-  to{transform:translateY(-10vh) scale(1.3);}
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
 }
 
 /* 🫧 ฟอง */
@@ -45,17 +44,13 @@ body{
 .box{
   position:relative;
   z-index:2;
-
   background:rgba(255,255,255,0.95);
   backdrop-filter:blur(12px);
-
   padding:35px;
   border-radius:30px;
-
   box-shadow:
     0 20px 60px rgba(255,182,193,0.6),
     0 0 40px rgba(255,105,180,0.4);
-
   animation:popBox 1s ease;
 }
 
@@ -64,9 +59,7 @@ body{
   font-size:22px;
   font-weight:800;
   color:#ff4da6;
-
   text-shadow:0 0 10px rgba(255,105,180,0.7);
-
   animation:blink 1.2s infinite alternate;
 }
 
@@ -75,11 +68,9 @@ body{
   margin-top:10px;
   font-size:30px;
   font-weight:900;
-
   background: linear-gradient(90deg,#ff6ec4,#ff9ad5,#ff6ec4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   animation:pop 1s infinite alternate;
 }
 
@@ -125,16 +116,12 @@ body{
   display:block;
   margin-top:20px;
   padding:14px;
-
   background: linear-gradient(90deg,#ff6ec4,#ff9ad5);
   color:white;
-
   border-radius:20px;
   text-decoration:none;
   font-weight:bold;
-
   box-shadow:0 10px 20px rgba(255,105,180,0.5);
-
   animation:pulse 1.5s infinite;
 }
 
@@ -166,20 +153,14 @@ body{
 }
 
 @keyframes twinkle{
-  from{opacity:0.3; transform:scale(0.8);}
-  to{opacity:1; transform:scale(1.3);}
+  from{opacity:0.3;}
+  to{opacity:1;}
 }
 
 @keyframes popBox{
   from{transform:scale(0.8); opacity:0;}
   to{transform:scale(1); opacity:1;}
 }
-
-
-
-
-
-  
 </style>
 </head>
 
@@ -197,9 +178,11 @@ body{
 <div class="bubble" style="width:100px;height:100px;left:75%"></div>
 
 <div class="box">
-<audio id="ding" preload="auto">
-  <source src="https://actions.google.com/sounds/v1/cartoon/wood_plank_flicks.ogg" type="audio/ogg">
-</audio>
+
+  <!-- 🔊 เสียง -->
+  <audio id="bgSound" loop preload="auto">
+    <source src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" type="audio/ogg">
+  </audio>
 
   <div class="sparkle">✨</div>
 
@@ -223,21 +206,28 @@ body{
 </div>
 
 <script>
-let soundPlayed = false;
+let started = false;
 
-function playSound(){
-  if(soundPlayed) return;
-  soundPlayed = true;
+function startSound(){
+  if(started) return;
+  started = true;
 
-  const audio = document.getElementById("ding");
+  const audio = document.getElementById("bgSound");
+  audio.volume = 0.3;
   audio.play().catch(()=>{});
 }
 
-/* เล่นเสียงทันทีที่เข้า */
-window.onload = playSound;
+/* รองรับมือถือ */
+window.addEventListener("click", startSound);
 
-/* แล้วค่อย redirect */
+/* เล่นทันทีถ้าได้ */
+window.onload = startSound;
+
+/* โหลดเสร็จ → หยุดเสียง → ไปหน้าโปร */
 setTimeout(()=>{
+  const audio = document.getElementById("bgSound");
+  audio.pause();
+
   window.location.href="https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec";
 },3000);
 </script>
