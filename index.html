@@ -6,9 +6,6 @@
 
 <title>Friend Follow Official</title>
 
-<!-- redirect 3 วิ -->
-<meta http-equiv="refresh" content="3;url=https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec">
-
 <style>
 body{
   margin:0;
@@ -17,69 +14,82 @@ body{
   justify-content:center;
   align-items:center;
   font-family:'Prompt',sans-serif;
+  text-align:center;
 
   background: linear-gradient(135deg,#ffd6ec,#d6f0ff,#e6d6ff);
-  text-align:center;
+  overflow:hidden;
 }
 
-/* กล่อง */
+/* 🌈 พื้นหลังลอย */
+.bg span{
+  position:absolute;
+  font-size:20px;
+  opacity:0.3;
+  animation: float 10s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
+
+/* 🎀 กล่อง */
 .box{
   background:white;
   padding:30px;
   border-radius:25px;
 
-  box-shadow:0 20px 60px rgba(255,182,193,0.5);
+  box-shadow:
+    0 20px 60px rgba(255,182,193,0.5),
+    0 0 40px rgba(255,105,180,0.3);
 
   animation:fadeIn 1s ease;
 }
 
-/* โลโก้ */
+/* 💖 โลโก้ */
 .logo{
-  font-size:22px;
-  font-weight:700;
+  font-size:24px;
+  font-weight:800;
   color:#ff4da6;
 
-  text-shadow:0 0 10px rgba(255,105,180,0.4);
+  text-shadow:0 0 15px rgba(255,105,180,0.7);
 
   animation:blink 1.2s infinite alternate;
 }
 
-/* โปร */
+/* 💎 title */
 .title{
   margin-top:10px;
-  font-size:28px;
+  font-size:30px;
   font-weight:900;
 
   background: linear-gradient(135deg,#ff6ec4,#ff9ad5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+
+  animation:pop 1s infinite alternate;
 }
 
-/* loading */
-.loader{
-  margin-top:20px;
-}
-
-.dot{
-  display:inline-block;
-  width:10px;
-  height:10px;
-  margin:5px;
-
-  background:#ff6ec4;
-  border-radius:50%;
-
+/* 🎁 กล่องสุ่ม */
+.gift{
+  font-size:50px;
+  margin-top:15px;
   animation:bounce 1s infinite;
 }
 
-.dot:nth-child(2){animation-delay:0.2s;}
-.dot:nth-child(3){animation-delay:0.4s;}
+/* ⏳ countdown */
+.count{
+  font-size:20px;
+  margin-top:10px;
+  color:#ff4da6;
+  font-weight:bold;
+}
 
-/* ปุ่ม fallback */
+/* 🔘 ปุ่ม */
 .btn{
   display:block;
   margin-top:20px;
-  padding:12px;
+  padding:14px;
 
   background:#06c755;
   color:white;
@@ -87,6 +97,8 @@ body{
   border-radius:12px;
   text-decoration:none;
   font-weight:bold;
+
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* anim */
@@ -100,8 +112,13 @@ body{
   to{opacity:0.6;}
 }
 
+@keyframes pop{
+  from{transform:scale(1);}
+  to{transform:scale(1.05);}
+}
+
 @keyframes fadeIn{
-  from{opacity:0; transform:scale(0.9);}
+  from{opacity:0; transform:scale(0.8);}
   to{opacity:1; transform:scale(1);}
 }
 </style>
@@ -109,28 +126,45 @@ body{
 
 <body>
 
+<!-- 🌈 พื้นหลัง -->
+<div class="bg">
+  <span style="left:10%">💖</span>
+  <span style="left:30%">✨</span>
+  <span style="left:50%">🎀</span>
+  <span style="left:70%">💎</span>
+  <span style="left:90%">🎁</span>
+</div>
+
 <div class="box">
 
   <div class="logo">🎀 Friend Follow Official 🎀</div>
 
   <div class="title">Promotion 2569</div>
 
-  <div class="loader">
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
+  <div class="gift">🎁</div>
 
-  <div style="margin-top:10px;color:#666;">
-    กำลังเข้าสู่โปรโมชั่น...
-  </div>
+  <div class="count">กำลังเข้าใน <span id="time">3</span> วิ</div>
 
-  <!-- เผื่อ redirect ไม่ทำงาน -->
   <a class="btn" href="https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec">
     เข้าหน้าโปรโมชั่น
   </a>
 
 </div>
+
+<script>
+let t = 3;
+const el = document.getElementById("time");
+
+const timer = setInterval(()=>{
+  t--;
+  el.innerText = t;
+
+  if(t <= 0){
+    clearInterval(timer);
+    window.location.href = "https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec";
+  }
+},1000);
+</script>
 
 </body>
 </html>
