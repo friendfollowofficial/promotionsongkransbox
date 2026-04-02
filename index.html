@@ -20,33 +20,43 @@ body{
   background: linear-gradient(135deg,#ffd6ec,#ffe3f7,#f3d6ff);
 }
 
-/* 💖 ฟองลอย */
+/* 💖 หัวใจลอย */
+.heart{
+  position:absolute;
+  font-size:18px;
+  opacity:0.6;
+  animation:floatUp 8s linear infinite;
+}
+
+@keyframes floatUp{
+  from{transform:translateY(100vh) scale(1);}
+  to{transform:translateY(-10vh) scale(1.3);}
+}
+
+/* 🫧 ฟอง */
 .bubble{
   position:absolute;
   border-radius:50%;
-  background:rgba(255,182,193,0.3);
-  animation:float 10s infinite linear;
-}
-
-@keyframes float{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
+  background:rgba(255,182,193,0.25);
+  animation:floatUp 10s linear infinite;
 }
 
 /* 🎀 กล่อง */
 .box{
   position:relative;
-  z-index:1;
+  z-index:2;
 
   background:rgba(255,255,255,0.95);
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(12px);
 
   padding:35px;
   border-radius:30px;
 
   box-shadow:
-    0 20px 60px rgba(255,182,193,0.5),
-    0 0 40px rgba(255,105,180,0.3);
+    0 20px 60px rgba(255,182,193,0.6),
+    0 0 40px rgba(255,105,180,0.4);
+
+  animation:popBox 1s ease;
 }
 
 /* 💎 โลโก้ */
@@ -55,9 +65,9 @@ body{
   font-weight:800;
   color:#ff4da6;
 
-  text-shadow:0 0 10px rgba(255,105,180,0.6);
+  text-shadow:0 0 10px rgba(255,105,180,0.7);
 
-  animation:blink 1.5s infinite alternate;
+  animation:blink 1.2s infinite alternate;
 }
 
 /* 🌈 title */
@@ -73,11 +83,20 @@ body{
   animation:pop 1s infinite alternate;
 }
 
-/* 🎁 ไอคอน */
+/* 🎁 */
 .gift{
-  font-size:50px;
+  font-size:55px;
   margin-top:15px;
   animation:bounce 1.2s infinite;
+}
+
+/* ✨ sparkle */
+.sparkle{
+  position:absolute;
+  top:-10px;
+  right:-10px;
+  font-size:18px;
+  animation:twinkle 1s infinite alternate;
 }
 
 /* 💬 loading */
@@ -114,7 +133,9 @@ body{
   text-decoration:none;
   font-weight:bold;
 
-  box-shadow:0 10px 20px rgba(255,105,180,0.4);
+  box-shadow:0 10px 20px rgba(255,105,180,0.5);
+
+  animation:pulse 1.5s infinite;
 }
 
 /* anim */
@@ -137,18 +158,41 @@ body{
   0%,100%{opacity:0.3;}
   50%{opacity:1;}
 }
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+  100%{transform:scale(1);}
+}
+
+@keyframes twinkle{
+  from{opacity:0.3; transform:scale(0.8);}
+  to{opacity:1; transform:scale(1.3);}
+}
+
+@keyframes popBox{
+  from{transform:scale(0.8); opacity:0;}
+  to{transform:scale(1); opacity:1;}
+}
 </style>
 </head>
 
 <body>
 
-<!-- 💖 ฟองลอย -->
-<div class="bubble" style="width:80px;height:80px;left:10%"></div>
-<div class="bubble" style="width:60px;height:60px;left:30%"></div>
-<div class="bubble" style="width:100px;height:100px;left:70%"></div>
-<div class="bubble" style="width:50px;height:50px;left:90%"></div>
+<!-- 💖 หัวใจ -->
+<div class="heart" style="left:10%">💖</div>
+<div class="heart" style="left:30%">💗</div>
+<div class="heart" style="left:60%">💓</div>
+<div class="heart" style="left:80%">💞</div>
+
+<!-- 🫧 ฟอง -->
+<div class="bubble" style="width:80px;height:80px;left:20%"></div>
+<div class="bubble" style="width:60px;height:60px;left:50%"></div>
+<div class="bubble" style="width:100px;height:100px;left:75%"></div>
 
 <div class="box">
+
+  <div class="sparkle">✨</div>
 
   <div class="logo">🎀 Friend Follow Official 🎀</div>
 
@@ -164,7 +208,7 @@ body{
   </div>
 
   <a class="btn" href="https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec">
-    เข้าหน้าโปรโมชั่น
+    เข้าไปดูโปรโมชั่น 💖
   </a>
 
 </div>
