@@ -15,25 +15,12 @@ body{
   align-items:center;
   font-family:'Prompt',sans-serif;
   text-align:center;
+  overflow:hidden;
 
   background: linear-gradient(135deg,#ffd6ec,#d6f0ff,#e6d6ff);
-  overflow:hidden;
 }
 
-/* 🌈 พื้นหลังลอย */
-.bg span{
-  position:absolute;
-  font-size:20px;
-  opacity:0.3;
-  animation: float 10s linear infinite;
-}
-
-@keyframes float{
-  from{transform:translateY(100vh);}
-  to{transform:translateY(-10vh);}
-}
-
-/* 🎀 กล่อง */
+/* 🎀 กล่องหลัก */
 .box{
   background:white;
   padding:30px;
@@ -42,59 +29,66 @@ body{
   box-shadow:
     0 20px 60px rgba(255,182,193,0.5),
     0 0 40px rgba(255,105,180,0.3);
-
-  animation:fadeIn 1s ease;
 }
 
 /* 💖 โลโก้ */
 .logo{
-  font-size:24px;
+  font-size:22px;
   font-weight:800;
   color:#ff4da6;
-
-  text-shadow:0 0 15px rgba(255,105,180,0.7);
-
-  animation:blink 1.2s infinite alternate;
+  animation:blink 1s infinite alternate;
 }
 
-/* 💎 title */
+/* 💎 โปร */
 .title{
-  margin-top:10px;
-  font-size:30px;
+  font-size:28px;
   font-weight:900;
+  margin-top:5px;
 
   background: linear-gradient(135deg,#ff6ec4,#ff9ad5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  animation:pop 1s infinite alternate;
 }
 
-/* 🎁 กล่องสุ่ม */
-.gift{
-  font-size:50px;
-  margin-top:15px;
-  animation:bounce 1s infinite;
+/* 🔥 urgency */
+.urgent{
+  margin-top:10px;
+  font-size:14px;
+  color:#ff2e88;
+  font-weight:bold;
+  animation:pulse 1s infinite;
 }
 
 /* ⏳ countdown */
 .count{
-  font-size:20px;
+  font-size:18px;
   margin-top:10px;
-  color:#ff4da6;
-  font-weight:bold;
 }
 
-/* 🔘 ปุ่ม */
+/* 👥 social proof */
+.people{
+  margin-top:10px;
+  font-size:13px;
+  color:#666;
+}
+
+/* 🎁 ไอคอน */
+.gift{
+  font-size:45px;
+  margin-top:10px;
+  animation:bounce 1s infinite;
+}
+
+/* ปุ่ม */
 .btn{
   display:block;
   margin-top:20px;
-  padding:14px;
+  padding:15px;
 
   background:#06c755;
   color:white;
 
-  border-radius:12px;
+  border-radius:15px;
   text-decoration:none;
   font-weight:bold;
 
@@ -104,7 +98,7 @@ body{
 /* anim */
 @keyframes bounce{
   0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
+  50%{transform:translateY(-8px);}
 }
 
 @keyframes blink{
@@ -112,28 +106,15 @@ body{
   to{opacity:0.6;}
 }
 
-@keyframes pop{
-  from{transform:scale(1);}
-  to{transform:scale(1.05);}
-}
-
-@keyframes fadeIn{
-  from{opacity:0; transform:scale(0.8);}
-  to{opacity:1; transform:scale(1);}
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+  100%{transform:scale(1);}
 }
 </style>
 </head>
 
 <body>
-
-<!-- 🌈 พื้นหลัง -->
-<div class="bg">
-  <span style="left:10%">💖</span>
-  <span style="left:30%">✨</span>
-  <span style="left:50%">🎀</span>
-  <span style="left:70%">💎</span>
-  <span style="left:90%">🎁</span>
-</div>
 
 <div class="box">
 
@@ -143,15 +124,26 @@ body{
 
   <div class="gift">🎁</div>
 
-  <div class="count">กำลังเข้าใน <span id="time">3</span> วิ</div>
+  <div class="urgent">
+    🔥 เหลือสิทธิ์ไม่มากแล้ว!
+  </div>
+
+  <div class="count">
+    ⏳ กำลังเข้าสู่โปรโมชั่นใน <span id="time">3</span> วิ
+  </div>
+
+  <div class="people" id="people">
+    👥 มีผู้สนใจ 12 คนตอนนี้
+  </div>
 
   <a class="btn" href="https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec">
-    เข้าหน้าโปรโมชั่น
+    เข้าไปดูโปรโมชั่นทันที
   </a>
 
 </div>
 
 <script>
+/* countdown */
 let t = 3;
 const el = document.getElementById("time");
 
@@ -164,6 +156,12 @@ const timer = setInterval(()=>{
     window.location.href = "https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec";
   }
 },1000);
+
+/* 👥 คนสนใจ random (ดูมีคนจริง) */
+setInterval(()=>{
+  let n = Math.floor(Math.random()*10)+10;
+  document.getElementById("people").innerText = "👥 มีผู้สนใจ "+n+" คนตอนนี้";
+},3000);
 </script>
 
 </body>
