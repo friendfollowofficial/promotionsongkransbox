@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Friend Follow Official</title>
+
+<!-- redirect 3 วิ -->
+<meta http-equiv="refresh" content="3;url=https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec">
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Prompt',sans-serif;
+
+  background: linear-gradient(135deg,#ffd6ec,#d6f0ff,#e6d6ff);
+  text-align:center;
+}
+
+/* กล่อง */
+.box{
+  background:white;
+  padding:30px;
+  border-radius:25px;
+
+  box-shadow:0 20px 60px rgba(255,182,193,0.5);
+
+  animation:fadeIn 1s ease;
+}
+
+/* โลโก้ */
+.logo{
+  font-size:22px;
+  font-weight:700;
+  color:#ff4da6;
+
+  text-shadow:0 0 10px rgba(255,105,180,0.4);
+
+  animation:blink 1.2s infinite alternate;
+}
+
+/* โปร */
+.title{
+  margin-top:10px;
+  font-size:28px;
+  font-weight:900;
+
+  background: linear-gradient(135deg,#ff6ec4,#ff9ad5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* loading */
+.loader{
+  margin-top:20px;
+}
+
+.dot{
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin:5px;
+
+  background:#ff6ec4;
+  border-radius:50%;
+
+  animation:bounce 1s infinite;
+}
+
+.dot:nth-child(2){animation-delay:0.2s;}
+.dot:nth-child(3){animation-delay:0.4s;}
+
+/* ปุ่ม fallback */
+.btn{
+  display:block;
+  margin-top:20px;
+  padding:12px;
+
+  background:#06c755;
+  color:white;
+
+  border-radius:12px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* anim */
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
+}
+
+@keyframes blink{
+  from{opacity:1;}
+  to{opacity:0.6;}
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:scale(0.9);}
+  to{opacity:1; transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <div class="logo">🎀 Friend Follow Official 🎀</div>
+
+  <div class="title">Promotion 2569</div>
+
+  <div class="loader">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+
+  <div style="margin-top:10px;color:#666;">
+    กำลังเข้าสู่โปรโมชั่น...
+  </div>
+
+  <!-- เผื่อ redirect ไม่ทำงาน -->
+  <a class="btn" href="https://script.google.com/macros/s/AKfycbz5Q9lhnCEOONKLjK0FP651SBYqwKaMQ9nv6e1o7UEvsZofya-COv0lmIr2A3OxILsk/exec">
+    เข้าหน้าโปรโมชั่น
+  </a>
+
+</div>
+
+</body>
+</html>
